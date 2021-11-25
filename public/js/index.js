@@ -3,6 +3,7 @@ var z, op, prev_lat, prev_lng, min_speed=0, max_speed=0, min_altitude=0, max_alt
 var currentposmarker = [];
 var currentpos;
 var currentPositionMarker;
+var infowindow;
 
 var map;
 
@@ -39,8 +40,10 @@ function initMap() {
             alert("Your browser does not support the Geolocation API");
  } 
 
+infowindow = new google.maps.InfoWindow();
 
-for(var i=0; i<markers.length;i++) {
+var marker,i;
+for(i=0; i<markers.length;i++) {
  
 const propertyDiv = document.createElement("div"); 
 propertyDiv.classList.add("propertyCard"); 
@@ -58,7 +61,7 @@ menudata.append(propertyDiv);
 
 var point = new google.maps.LatLng(markers[i]['lat'],markers[i]['lng']);
 route_pts.push(point);
-var marker = new google.maps.Marker({
+marker = new google.maps.Marker({
   position: point,
   map: map,
   title: markers[i]['address'],
@@ -69,8 +72,16 @@ var marker = new google.maps.Marker({
       anchor: new google.maps.Point(15,50)
   }
  });
-} 
-
+google.maps.event.addListener(marker,'click', (function(marker,i) {
+   return function() {	  
+	  var html = markers[i]['address']+"<br/>REVIEW:";
+      infowindow.setContent(html);     
+      infowindow.setOptions({pixelOffset: new google.maps.Size(0,-20)});
+      infowindow.setPosition(marker.position);
+      infowindow.open(map);
+      }
+      })(marker,i)); 
+    }
 
 //***********ROUTING****************//
 //Initialize the Path Array
