@@ -1,0 +1,72 @@
+[
+    {
+        "description": "Christmas Lights!",
+        "address": "35 Otterington Grove, Ivanhoe",
+        "latitude": -37.77669,
+        "longitude": 145.05574,
+        "event_id": 1,
+        "user_id": 1
+    },
+    {
+        "description": "Christmas Lights!",
+        "address": "150 The Boulevard, Ivanhoe",
+        "latitude": -37.77347,
+        "longitude": 145.05055,
+        "event_id": 2,
+        "user_id": 1
+    },
+    {
+        "description": "Christmas Lights!",
+        "address": "158 The Boulevard, Ivanhoe",
+        "latitude": -37.77385,
+        "longitude": 145.05109
+    },
+    {
+        "description": "Christmas Lights!",
+        "address": "170 The Boulevard, Ivanhoe",
+        "latitude": -37.77461,
+        "longitude": 145.05202,
+        "event_id": 1,
+        "user_id": 2
+    },
+    {
+        "description": "Christmas Lights!",
+        "address": "180 The Boulevard, Ivanhoe",
+        "latitude": -37.77503,
+        "longitude": 145.05265,
+        "event_id": 2,
+        "user_id": 2
+    },
+    {
+        "description": "Christmas Lights!",
+        "address": "144 The Boulevard, Ivanhoe",
+        "latitude": -37.77278,
+        "longitude": 145.04945,
+        "event_id": 1,
+        "user_id": 3
+    },
+    {
+        "description": "Christmas Lights!",
+        "address": "197 The Boulevard, Ivanhoe",
+        "latitude": -37.7765,
+        "longitude": 145.05475,
+        "event_id": 2,
+        "user_id": 3
+    },
+    {
+        "description": "Christmas Lights!",
+        "address": "205 The Boulevard, Ivanhoe",
+        "latitude": -37.77705,
+        "longitude": 145.05542,
+        "event_id": 3,
+        "user_id": 3
+    },
+    {
+        "description": "Christmas Lights!",
+        "address": "223 The Boulevard, Ivanhoe",
+        "latitude": -37.777759,
+        "longitude": 145.05661,
+        "event_id": 3,
+        "user_id": 1
+    }
+]
