@@ -15,22 +15,25 @@ Property.init({
         type: DataTypes.STRING,
         allowNull:false,
     },
+
     address:{
         type: DataTypes.STRING,
         allowNull: false,
     },
+
     latitude:{
-        type: DataTypes.FLOAT,
+        type: DataTypes.DECIMAL(11,7),
         allowNull: false,
 
     },
 
     longitude:{
-        type: DataTypes.FLOAT,
+        type: DataTypes.DECIMAL(11,7),
         allowNull: false,
         
     },
-    event_id:{
+
+  /*   event_id:{
         type: DataTypes.INTEGER,
         allowNull: false,
         references:{
@@ -38,6 +41,7 @@ Property.init({
             key: 'id'
         },
     },
+ */
     user_id:{
         type: DataTypes.INTEGER,
         references:{
@@ -45,12 +49,13 @@ Property.init({
             key: 'id',
         },
     },
-
+},
+{
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'event',
+    modelName: 'property',
 });
 
 module.exports = Property;

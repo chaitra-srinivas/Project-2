@@ -10,14 +10,14 @@ Review.init({
         primaryKey: true,
         autoIncrement: true,
     },
-    event_id:{
+   /*  event_id:{
         type: DataTypes.INTEGER,
         allowNull: false,
         references:{
             model: 'event',
             key: 'id'
         },
-    },
+    }, */
 
     event_like:{
         type: DataTypes.BOOLEAN,
@@ -41,6 +41,15 @@ Review.init({
         },
     },
 
+    property_id:{
+        type: DataTypes.INTEGER,
+        references:{
+            model: 'property',
+            key: 'id',
+        },
+    },
+},
+{
     sequelize,
     timestamps: false,
     freezeTableName: true,
