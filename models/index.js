@@ -2,7 +2,7 @@ const User = require('./User');
 const Property = require('./Property');
 const Review = require('./Review');
 const Event = require('./Event');
-const Events = require('./Events');
+const EventDetails = require('./EventDetails');
 
 User.hasOne(Property,{
     foreignKey: 'user_id',
@@ -14,7 +14,7 @@ Property.belongsTo(User,{
     
 });
 
-Property.hasMany(Event,{
+/* Property.hasMany(Event,{
     foreignKey: 'event_id',
 
 });
@@ -27,14 +27,14 @@ Event.hasMany(Review,{
     foreignKey: 'event_id',
 });
 
-Event.hasOne(Events,{
+Event.hasOne(EventDetails,{
     foreignKey: 'event_id',
 })
 
-Events.belongsTo(Event,{
+EventDetails.belongsTo(Event,{
     foreignKey: 'event_id',
 })
-
+ 
 Review.belongsTo(Event,{
     foreignKey: 'event_id',
 });
@@ -47,5 +47,15 @@ User.hasMany(Review,{
 Review.belongsTo(User,{
     foreignKey: 'user_id',
 });
+*/
 
-module.exports = {User, Property, Review,Event,Events};
+
+Property.hasMany(Review,{
+    foreignKey: 'property_id',
+    onDelete: 'CASCADE',
+});
+
+Review.belongsTo(Property,{
+    foreignKey: 'property_id',
+});
+module.exports = {User, Property, Review,Event,EventDetails};

@@ -1,0 +1,23 @@
+[
+    {
+        "event_like": true,
+        "review_text": "Great display of lights!",
+        "user_id": 1,
+        "propery_id": 4
+
+    },
+    {
+        "event_like": false,
+        "review_text": "Loud music",
+        "user_id": 2,
+        "propery_id": 1
+
+    },
+    {
+        "event_like": true,
+        "review_text": "Beautiful decorations!",
+        "user_id": 3,
+        "propery_id": 3
+
+    }
+]
