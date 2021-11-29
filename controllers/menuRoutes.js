@@ -1,11 +1,13 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Review, User, Property } = require("../models");
+const { Post, User, Comment } = require("../models");
+const withAuth = require("../utils/auth");
 
-router.get("/", (req, res) => {
-  console.log(req.session);
-
+router.get("/", withAuth, (req, res) => {
   Property.findAll({
+    where: {
+      user_id: req.session.user_id,
+    },
     attributes: ["id", "description", "address", "latitude","longitude","event_id","user_id"],
     include: [
       {
@@ -24,10 +26,7 @@ router.get("/", (req, res) => {
   })
     .then((propertyData) => {
       const properties = propertyData.map((property) => property.get({ plain: true }));
-      res.render("homepage", {
-        properties,
-        loggedIn: req.session.loggedIn,
-      });
+      res.render("menu", { properties, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
@@ -35,24 +34,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/login", (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect("/");
-    return;
-  }
-
-  res.render("login");
-});
-
-router.get("/signup", (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect("/");
-    return;
-  }
-  res.render("signup");
-});
-
-router.get("/property/:id", (req, res) => {
+router.get("/edit/:id", withAuth, (req, res) => {
   Property.findOne({
     where: {
       id: req.params.id,
@@ -79,12 +61,43 @@ router.get("/property/:id", (req, res) => {
         return;
       }
 
-      const property = propertyData.get({ plain: true });
+      const post = dbPostData.get({ plain: true });
 
-      res.render("single-property", {
-        property,
+      res.render("edit-post", {
+        post,
         loggedIn: true,
       });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get("/create/", withAuth, (req, res) => {
+  Property.findAll({
+    where: {
+      user_id: req.session.user_id,
+    },
+    attributes: ["id", "description", "address", "latitude","longitude","event_id","user_id"],
+    include: [
+      {
+        model: Review,
+        attributes: ["id", "event_id", "event_like", "review_text", "review_date","user_id"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
+  })
+    .then((propertyData) => {
+      const properties = propertyData.map((property) => property.get({ plain: true }));
+      res.render("create-property", { properties, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);

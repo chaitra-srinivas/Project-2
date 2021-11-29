@@ -9,8 +9,7 @@ Events.init({
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
-    },
-   
+    },   
     property_id:{
         type: DataTypes.INTEGER,
         references:{
@@ -26,8 +25,6 @@ Events.init({
             key: 'id',
         },
     },
-
-
     event_start_dt:{
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
@@ -41,7 +38,6 @@ Events.init({
         type: DataTypes.INTEGER,
         
     },
-
     event_end_time:{
         type: DataTypes.INTEGER,
         
